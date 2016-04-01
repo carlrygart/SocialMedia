@@ -22,7 +22,7 @@ WHERE (
 # “News Feed” list, or a wall message sent from a friend in the “News Feed” list to this user.
 SELECT DISTINCT message.*
 FROM message, user, friendship, friendship_listed_in, friend_list
-WHERE 	user.user_id = 4 AND
+WHERE 	user.user_id = 2 AND
         ( 	(message.sender_id = friendship.user_id_1 AND message.receiver_id = friendship.user_id_2) OR
 			(message.sender_id = friendship.user_id_2 AND message.receiver_id = friendship.user_id_1) OR
 			(message.sender_id = message.receiver_id AND message.sender_id = user.user_id) ) AND
@@ -35,3 +35,46 @@ LIMIT 5;
 
 # 4) Suggest friends to a given user: select top 5 users of the site who has the largest
 # number of mutual friends with this user and yet to be a friend.
+SELECT y.user_id_2
+   FROM friendship x
+   JOIN friendship y
+     ON y.user_id_1 = x.user_id_2
+    AND y.user_id_2 <> x.user_id_1
+   LEFT
+   JOIN friendship z
+     ON z.user_id_2 = y.user_id_2 
+    AND z.user_id_1 = x.user_id_1
+  WHERE x.user_id_1 = 1
+    AND z.user_id_1 IS NULL;
+
+SELECT
+    a.user_id_2,
+    COUNT(*) as relevance,
+    GROUP_CONCAT(a.user_id_1 ORDER BY a.user_id_1) as list_mutual_friends
+FROM 
+    friendship a
+JOIN 
+    friendship b
+ON  (
+     b.user_id_2 = a.user_id_1
+     AND b.approved = true
+     AND b.user_id_1 = 6
+    )
+LEFT JOIN
+    friendship c
+ON
+    (
+     c.user_id_2 = a.user_id_2 
+     AND c.approved = true
+     AND c.user_id_1 = 6
+    )     
+WHERE 
+    a.approved = true
+AND
+    c.user_id_1 IS NULL
+AND 
+    a.user_id_2 != 6
+GROUP BY 
+    a.user_id_2
+ORDER BY 
+    relevance DESC;
