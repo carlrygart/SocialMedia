@@ -4,6 +4,7 @@ INSERT INTO user SET first_name='Yang', last_name='Xing', birthday='19840212', e
 INSERT INTO user SET first_name='Mona', last_name='Becker', birthday='19911220', email='mona@becker.com', sex='F', hometown='Lund';
 INSERT INTO user SET first_name='Frank', last_name='Wikstrom', birthday='19751021', email='frank@Wikstrom.se', sex='M', hometown='Lund';
 INSERT INTO user SET first_name='Lars', last_name='Wallman', birthday='19700921', email='lars@wallman.se', sex='M', hometown='Paris';
+INSERT INTO user SET first_name='Cong', last_name='Gao', birthday='19730924', email='cong@goa.sg', sex='M', hometown='Singapore';
 
 INSERT INTO work_experience SET employee_id=1, employer='Apple', position='Sales Manager', city=NULL, starting_time=20160101;
 INSERT INTO education SET user_id=2, school_name='Nanyang Tech', school_type=NULL, class_year=NULL;
@@ -17,6 +18,7 @@ INSERT INTO message SET timestamp=20150516104637, text="This is a message.", sen
 INSERT INTO message SET timestamp=20150516103637, text="This is another message.", sender_id=6, receiver_id=2;
 INSERT INTO message SET timestamp=20150516103638, text="This is a third message.", sender_id=1, receiver_id=6;
 INSERT INTO message SET timestamp=20150516165039, text="Lorem ipsum dolor sit amet, lacus nonummy mattis, ante pellentesque.", sender_id=1, receiver_id=2;
+INSERT INTO message SET timestamp=20150716165139, text="Lacus nonummy mattis, ante pellentesque.", sender_id=1, receiver_id=7;
 
 INSERT INTO message SET text="Lorem ipsum dolor sit amet, aliquam tellus, amet eget quisque.", sender_id=3, receiver_id=2;
 INSERT INTO message SET text="felis libero placerat et malesuada malesuada", sender_id=5, receiver_id=2;
@@ -30,6 +32,8 @@ INSERT INTO comment SET timestamp=20160309173630, text='Nice message!', user_id=
 INSERT INTO comment SET timestamp=20160309183131, text='Agree!', user_id=3, message_id=1;
 INSERT INTO comment SET timestamp=20160409183132, text='Me too..', user_id=4, message_id=2;
 INSERT INTO comment SET timestamp=20160409183133, text='Hello there!', user_id=4, message_id=1;
+INSERT INTO comment SET text='Testing', user_id=2, message_id=19;
+INSERT INTO comment SET text='Testing again', user_id=3, message_id=19;
 
 INSERT INTO point_of_interest SET name='Orchard Road', description=NULL, address=NULL, contact_info=NULL, longitude=0.6756387, latitude=100.35453276;
 INSERT INTO category SET category_name='Shopping';
