@@ -29,8 +29,9 @@ WHERE 	user.user_id = 2 AND
         (friendship_listed_in.user_id_1 = friendship.user_id_1 AND
          friendship_listed_in.user_id_2 = friendship.user_id_2 AND
          friendship_listed_in.friend_list_id = friend_list.friend_list_id) AND
-        (friend_list.owner_id = user.user_id AND friend_list.friend_list_name = 'News Feed');
-#TODO: Only 5 results.
+        (friend_list.owner_id = user.user_id AND friend_list.friend_list_name = 'News Feed')
+ORDER BY timestamp DESC
+LIMIT 5;
 
 # 4) Suggest friends to a given user: select top 5 users of the site who has the largest
 # number of mutual friends with this user and yet to be a friend.

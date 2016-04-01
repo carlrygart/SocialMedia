@@ -16,7 +16,15 @@ INSERT INTO message SET timestamp=20160516104636, text="My first status update."
 INSERT INTO message SET timestamp=20160516104637, text="This is a message.", sender_id=6, receiver_id=3;
 INSERT INTO message SET timestamp=20160516103637, text="This is another message.", sender_id=6, receiver_id=2;
 INSERT INTO message SET timestamp=20160516103638, text="This is a third message.", sender_id=1, receiver_id=6;
-INSERT INTO message SET timestamp=20160516103937, text="Thank you for your message!", sender_id=6, receiver_id=1;
+INSERT INTO message SET timestamp=20160516165039, text="Lorem ipsum dolor sit amet, lacus nonummy mattis, ante pellentesque.", sender_id=1, receiver_id=2;
+
+INSERT INTO message SET text="Lorem ipsum dolor sit amet, aliquam tellus, amet eget quisque.", sender_id=3, receiver_id=2;
+INSERT INTO message SET text="felis libero placerat et malesuada malesuada", sender_id=5, receiver_id=2;
+INSERT INTO message SET text="vitae nullam neque in purus tincidunt", sender_id=2, receiver_id=2;
+INSERT INTO message SET text="a facilisis a sodales sem volutpat", sender_id=2, receiver_id=4;
+INSERT INTO message SET text="vel ut enim augue tempus posuere", sender_id=3, receiver_id=2;
+INSERT INTO message SET text="turpis tristique habitasse nisl magna porta", sender_id=4, receiver_id=2;
+
 INSERT INTO comment SET timestamp=20160309173630, text='Nice message!', user_id=2, message_id=1;
 INSERT INTO comment SET timestamp=20160309183131, text='Agree!', user_id=3, message_id=1;
 INSERT INTO comment SET timestamp=20160409183132, text='Me too..', user_id=4, message_id=2;
