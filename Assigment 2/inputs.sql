@@ -8,15 +8,15 @@ INSERT INTO user SET first_name='Lars', last_name='Wallman', birthday='19700921'
 INSERT INTO work_experience SET employee_id=1, employer='Apple', position='Sales Manager', city=NULL, starting_time=20160101;
 INSERT INTO education SET user_id=2, school_name='Nanyang Tech', school_type=NULL, class_year=NULL;
 
-INSERT INTO message SET timestamp=20160309173031, text="Hello world!", sender_id=1, receiver_id=2;
-INSERT INTO message SET timestamp=20160310183031, text="I like candy.", sender_id=2, receiver_id=3;
-INSERT INTO message SET timestamp=20160411183036, text="How are you doing?", sender_id=1, receiver_id=3;
-INSERT INTO message SET timestamp=20160411183036, text="What are you doing?", sender_id=4, receiver_id=2;
-INSERT INTO message SET timestamp=20160516104636, text="My first status update.", sender_id=2, receiver_id=2;
-INSERT INTO message SET timestamp=20160516104637, text="This is a message.", sender_id=6, receiver_id=3;
-INSERT INTO message SET timestamp=20160516103637, text="This is another message.", sender_id=6, receiver_id=2;
-INSERT INTO message SET timestamp=20160516103638, text="This is a third message.", sender_id=1, receiver_id=6;
-INSERT INTO message SET timestamp=20160516165039, text="Lorem ipsum dolor sit amet, lacus nonummy mattis, ante pellentesque.", sender_id=1, receiver_id=2;
+INSERT INTO message SET timestamp=20150309173031, text="Hello world!", sender_id=1, receiver_id=2;
+INSERT INTO message SET timestamp=20150310183031, text="I like candy.", sender_id=2, receiver_id=3;
+INSERT INTO message SET timestamp=20150411183036, text="How are you doing?", sender_id=1, receiver_id=3;
+INSERT INTO message SET timestamp=20150411183036, text="What are you doing?", sender_id=4, receiver_id=2;
+INSERT INTO message SET timestamp=20150516104636, text="My first status update.", sender_id=2, receiver_id=2;
+INSERT INTO message SET timestamp=20150516104637, text="This is a message.", sender_id=6, receiver_id=3;
+INSERT INTO message SET timestamp=20150516103637, text="This is another message.", sender_id=6, receiver_id=2;
+INSERT INTO message SET timestamp=20150516103638, text="This is a third message.", sender_id=1, receiver_id=6;
+INSERT INTO message SET timestamp=20150516165039, text="Lorem ipsum dolor sit amet, lacus nonummy mattis, ante pellentesque.", sender_id=1, receiver_id=2;
 
 INSERT INTO message SET text="Lorem ipsum dolor sit amet, aliquam tellus, amet eget quisque.", sender_id=3, receiver_id=2;
 INSERT INTO message SET text="felis libero placerat et malesuada malesuada", sender_id=5, receiver_id=2;
@@ -24,6 +24,7 @@ INSERT INTO message SET text="vitae nullam neque in purus tincidunt", sender_id=
 INSERT INTO message SET text="a facilisis a sodales sem volutpat", sender_id=2, receiver_id=4;
 INSERT INTO message SET text="vel ut enim augue tempus posuere", sender_id=3, receiver_id=2;
 INSERT INTO message SET text="turpis tristique habitasse nisl magna porta", sender_id=4, receiver_id=2;
+INSERT INTO message SET text="consectetuer lacinia condimentum donec cumque volutpat", sender_id=6, receiver_id=4;
 
 INSERT INTO comment SET timestamp=20160309173630, text='Nice message!', user_id=2, message_id=1;
 INSERT INTO comment SET timestamp=20160309183131, text='Agree!', user_id=3, message_id=1;
@@ -55,6 +56,7 @@ INSERT INTO friendship SET user_id_1=2, user_id_2=4, approved=true;
 INSERT INTO friendship_listed_in SET user_id_1=6, user_id_2=1, friend_list_id=12;
 INSERT INTO friendship_listed_in SET user_id_1=2, user_id_2=4, friend_list_id=4;
 INSERT INTO friendship_listed_in SET user_id_1=2, user_id_2=3, friend_list_id=4;
+INSERT INTO friendship_listed_in SET user_id_1=4, user_id_2=6, friend_list_id=8;
 
 INSERT INTO album_visible_to_friend_list SET friend_list_id=1, photo_album_id=1;
 

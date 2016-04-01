@@ -22,10 +22,10 @@ WHERE (
 # “News Feed” list, or a wall message sent from a friend in the “News Feed” list to this user.
 SELECT DISTINCT message.*
 FROM message, user, friendship, friendship_listed_in, friend_list
-WHERE 	user.user_id = 2 AND
+WHERE 	user.user_id = 4 AND
         ( 	(message.sender_id = friendship.user_id_1 AND message.receiver_id = friendship.user_id_2) OR
 			(message.sender_id = friendship.user_id_2 AND message.receiver_id = friendship.user_id_1) OR
-			(message.sender_id = message.receiver_id) ) AND
+			(message.sender_id = message.receiver_id AND message.sender_id = user.user_id) ) AND
         (friendship_listed_in.user_id_1 = friendship.user_id_1 AND
          friendship_listed_in.user_id_2 = friendship.user_id_2 AND
          friendship_listed_in.friend_list_id = friend_list.friend_list_id) AND
