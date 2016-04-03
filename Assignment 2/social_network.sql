@@ -1,6 +1,6 @@
 #CREATE SCHEMA `social_network` DEFAULT CHARACTER SET utf8 ;
 
-CREATE TABLE user3 (user_id int(15) AUTO_INCREMENT PRIMARY KEY, first_name varchar(255) NOT NULL, last_name varchar(255) NOT NULL, birthday timestamp NULL, email varchar(255) UNIQUE NOT NULL, sex char(1), hometown varchar(255));
+CREATE TABLE user (user_id int(15) AUTO_INCREMENT PRIMARY KEY, first_name varchar(255) NOT NULL, last_name varchar(255) NOT NULL, birthday timestamp NULL, email varchar(255) UNIQUE NOT NULL, sex char(1), hometown varchar(255));
 
 CREATE TABLE work_experience ( work_experience_id int(15) AUTO_INCREMENT PRIMARY KEY, employee_id int(15) NOT NULL, employer varchar(255) NOT NULL, position varchar(255), city varchar(255), starting_time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, ending_time timestamp NULL, FOREIGN KEY (employee_id) REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE );
 CREATE TABLE education (education_id int(15) AUTO_INCREMENT PRIMARY KEY, user_id int(15) NOT NULL, school_name varchar(255) NOT NULL, school_type varchar(255), class_year int(4), FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE );
