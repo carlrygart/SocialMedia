@@ -104,7 +104,7 @@ ORDER BY visited_times DESC
 LIMIT 5;
 
 # Find all poi user_id = 10 has visited.
-SELECT poi.*
+SELECT DISTINCT poi.*
 FROM point_of_interest poi, checkin_at c
 WHERE c.user_id = 10 AND poi.point_of_interest_id = c.point_of_interest_id;
 
@@ -116,5 +116,19 @@ WHERE c.user_id = 10 AND poi.point_of_interest_id = c.point_of_interest_id;
 #-------------------------------------------------------------------------------------
 # 7) Find the most popular POI with the most number of check-ins. And find the POI that has
 # been checked in by the most number of distinct users.
+SELECT COUNT(*) visited_times, subquery.*, GROUP_CONCAT(subquery.user_id ORDER BY subquery.user_id) visited_by
+FROM (
+	SELECT DISTINCT poi.*, u.user_id
+	FROM point_of_interest poi, checkin_at c, user u
+	WHERE poi.point_of_interest_id = c.point_of_interest_id
+	AND u.user_id = c.user_id) as subquery
+GROUP BY subquery.point_of_interest_id
+ORDER BY visited_times DESC;
 
+# For testing: Check how many distinct users have checked in at point_of_interest_id = 22.
+SELECT DISTINCT poi.*, u.user_id
+FROM point_of_interest poi, checkin_at c, user u
+WHERE poi.point_of_interest_id = c.point_of_interest_id
+	AND u.user_id = c.user_id
+    AND poi.point_of_interest_id = 22;
 
