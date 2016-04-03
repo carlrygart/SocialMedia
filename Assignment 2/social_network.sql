@@ -1,4 +1,6 @@
-#CREATE SCHEMA `social_network` DEFAULT CHARACTER SET utf8 ;
+DROP DATABASE IF EXISTS `social_network`;
+CREATE SCHEMA `social_network` DEFAULT CHARACTER SET utf8 ;
+USE social_network;
 
 CREATE TABLE user (user_id int(15) AUTO_INCREMENT PRIMARY KEY, first_name varchar(255) NOT NULL, last_name varchar(255) NOT NULL, birthday timestamp NULL, email varchar(255) UNIQUE NOT NULL, sex char(1), hometown varchar(255));
 
