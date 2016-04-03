@@ -25,8 +25,8 @@ def generate_friend_data():
 def generate_poi_data():
     output = []
     for i in range(41):
-        long = round(random.uniform(1,3), 6)
-        lat = round(random.uniform(103,105), 6)
+        long = round(random.uniform(1,2), 6)
+        lat = round(random.uniform(103,104), 6)
         print(", {}, {}),".format(long, lat))
 
 def generate_checkin_data():
@@ -35,4 +35,4 @@ def generate_checkin_data():
         poi = random.randrange(1,41)
         print("({}, {}),".format(user, poi))
 
-generate_checkin_data()
+generate_poi_data()

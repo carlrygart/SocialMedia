@@ -113,6 +113,23 @@ WHERE c.user_id = 10 AND poi.point_of_interest_id = c.point_of_interest_id;
 # find the nearest points of interest such that its description contains word “delicious”
 # and its name contains word “pizza”.
 
+SELECT dest_poi.*
+FROM point_of_interest curr_poi, point_of_interest dest_poi
+WHERE curr_poi.point_of_interest_id = 3
+	AND ABS(curr_poi.latitude - dest_poi.latitude) < 1
+    AND ABS(curr_poi.longitude - dest_poi.longitude) < 1
+    AND curr_poi.point_of_interest_id != dest_poi.point_of_interest_id
+    AND dest_poi.name LIKE '%pizza%'
+	AND dest_poi.description LIKE '%delicious%';
+
+# FOR TESTING: Find all POI that are close to point_of_interest_id = 3.
+SELECT dest_poi.*
+FROM point_of_interest curr_poi, point_of_interest dest_poi
+WHERE curr_poi.point_of_interest_id = 3
+	AND ABS(curr_poi.latitude - dest_poi.latitude) < 1
+    AND ABS(curr_poi.longitude - dest_poi.longitude) < 1
+    AND curr_poi.point_of_interest_id != dest_poi.point_of_interest_id;
+
 #-------------------------------------------------------------------------------------
 # 7) Find the most popular POI with the most number of check-ins. And find the POI that has
 # been checked in by the most number of distinct users.
