@@ -72,6 +72,34 @@ WHERE friend_list_id % 2 = 0;
 #-------------------------------------------------------------------------------------
 # 4) Suggest friends to a given user: select top 5 users of the site who has the largest
 # number of mutual friends with this user and yet to be a friend.
+SELECT subq.*, COUNT(*) as relevance
+FROM (
+	SELECT fr1.user_id_2 as suggestion
+	FROM friendship fr1
+	WHERE fr1.user_id_1 IN (
+		SELECT f1.user_id_2 as friends
+		FROM friendship f1
+		WHERE f1.user_id_1 = 2
+		UNION ALL
+		SELECT f2.user_id_1 as friends
+		FROM friendship f2
+		WHERE f2.user_id_2 = 2)
+	UNION ALL
+	SELECT fr2.user_id_1 as suggestion
+	FROM friendship fr2
+	WHERE fr2.user_id_2 IN (
+		SELECT f1.user_id_2 as friends
+		FROM friendship f1
+		WHERE f1.user_id_1 = 2
+		UNION ALL
+		SELECT f2.user_id_1 as friends
+		FROM friendship f2
+		WHERE f2.user_id_2 = 2)) as subq
+WHERE subq.suggestion != 2
+GROUP BY suggestion
+ORDER BY relevance DESC;
+
+# Another approach, not really working
 SELECT
 	subq.suggestion,
 	COUNT(*) as relevance,
@@ -83,18 +111,18 @@ FROM (
 	ON (
 		 b.user_id_2 = a.user_id_1
 		 AND b.approved = true
-		 AND b.user_id_1 = 10
+		 AND b.user_id_1 = 2
 		)
 	LEFT JOIN friendship c
 	ON (
 		 c.user_id_2 = a.user_id_2 AND
 		 c.approved = true AND
-		 c.user_id_1 = 10
+		 c.user_id_1 = 2
 		)
 	WHERE
 		a.approved = true AND
 		c.user_id_1 IS NULL AND 
-		a.user_id_2 != 10
+		a.user_id_2 != 2
 UNION ALL
 	SELECT a.user_id_1 as suggestion, a.user_id_2 as mutual_friend
 	FROM friendship a
@@ -102,18 +130,18 @@ UNION ALL
 	ON (
 		 b.user_id_1 = a.user_id_2
 		 AND b.approved = true
-		 AND b.user_id_2 = 10
+		 AND b.user_id_2 = 2
 		)
 	LEFT JOIN friendship c
 	ON  (
 		 c.user_id_1 = a.user_id_1 AND
 		 c.approved = true AND
-		 c.user_id_2 = 10
+		 c.user_id_2 = 2
 		)     
 	WHERE 
 		a.approved = true AND
 		c.user_id_2 IS NULL AND 
-		a.user_id_1 != 10) as subq
+		a.user_id_1 != 2) as subq
 GROUP BY
     suggestion
 ORDER BY 
@@ -150,48 +178,24 @@ GROUP BY
 ORDER BY 
     relevance DESC;
 
-# Antoher approach, get another answer. Strange..
-SELECT subq.*, COUNT(*) as relevance
-FROM (
-	SELECT fr1.user_id_2 as suggestion
-	FROM friendship fr1
-	WHERE fr1.user_id_1 IN (
-		SELECT f1.user_id_2 as friends
-		FROM friendship f1
-		WHERE f1.user_id_1 = 10
-		UNION ALL
-		SELECT f2.user_id_1 as friends
-		FROM friendship f2
-		WHERE f2.user_id_2 = 10)
-	UNION ALL
-	SELECT fr2.user_id_1 as suggestion
-	FROM friendship fr2
-	WHERE fr2.user_id_2 IN (
-		SELECT f1.user_id_2 as friends
-		FROM friendship f1
-		WHERE f1.user_id_1 = 10
-		UNION ALL
-		SELECT f2.user_id_1 as friends
-		FROM friendship f2
-		WHERE f2.user_id_2 = 10)) as subq
-WHERE subq.suggestion != 10
-GROUP BY suggestion
-ORDER BY relevance DESC;
-
 # Find friend of user_id = 10
 SELECT f1.user_id_2 as friends
 FROM friendship f1
-WHERE f1.user_id_1 = 10
+WHERE f1.user_id_1 = 2
 UNION ALL
 SELECT f2.user_id_1 as friends
 FROM friendship f2
-WHERE f2.user_id_2 = 10
+WHERE f2.user_id_2 = 2
 ORDER BY friends;
 
 # Find friends of user_id = 10 in two columns.
 SELECT f.*
 FROM friendship f
-WHERE f.user_id_1 = 10 OR f.user_id_2 = 10;
+WHERE f.user_id_1 = 2 OR f.user_id_2 = 2;
+
+SELECT f.*
+FROM friendship f
+WHERE f.user_id_1 = 23 OR f.user_id_2 = 23;
 
 
 #-------------------------------------------------------------------------------------
@@ -235,8 +239,8 @@ WHERE c.user_id = 10 AND poi.point_of_interest_id = c.point_of_interest_id;
 SELECT dest_poi.*
 FROM point_of_interest curr_poi, point_of_interest dest_poi
 WHERE curr_poi.point_of_interest_id = 3
-	AND ABS(curr_poi.latitude - dest_poi.latitude) < 1
-    AND ABS(curr_poi.longitude - dest_poi.longitude) < 1
+	AND ABS(curr_poi.latitude - dest_poi.latitude) < 0.2
+    AND ABS(curr_poi.longitude - dest_poi.longitude) < 0.2
     AND curr_poi.point_of_interest_id != dest_poi.point_of_interest_id
     AND dest_poi.name LIKE '%pizza%'
 	AND dest_poi.description LIKE '%delicious%';
@@ -253,6 +257,15 @@ WHERE curr_poi.point_of_interest_id = 3
 #-------------------------------------------------------------------------------------
 # 7) Find the most popular POI with the most number of check-ins. And find the POI that has
 # been checked in by the most number of distinct users.
+SELECT DISTINCT COUNT(*) visited_times, poi.*, u.user_id, GROUP_CONCAT(u.user_id ORDER BY u.user_id) visited_by
+FROM point_of_interest poi, checkin_at c, user u
+WHERE poi.point_of_interest_id = c.point_of_interest_id
+AND u.user_id = c.user_id
+GROUP BY poi.point_of_interest_id
+ORDER BY visited_times DESC
+LIMIT 1;
+
+# Second part (DISTINCT)
 SELECT COUNT(*) visited_times, subquery.*, GROUP_CONCAT(subquery.user_id ORDER BY subquery.user_id) visited_by
 FROM (
 	SELECT DISTINCT poi.*, u.user_id
@@ -260,7 +273,8 @@ FROM (
 	WHERE poi.point_of_interest_id = c.point_of_interest_id
 	AND u.user_id = c.user_id) as subquery
 GROUP BY subquery.point_of_interest_id
-ORDER BY visited_times DESC;
+ORDER BY visited_times DESC
+LIMIT 1;
 
 # For testing: Check how many distinct users have checked in at point_of_interest_id = 22.
 SELECT DISTINCT poi.*, u.user_id
@@ -268,4 +282,3 @@ FROM point_of_interest poi, checkin_at c, user u
 WHERE poi.point_of_interest_id = c.point_of_interest_id
 	AND u.user_id = c.user_id
     AND poi.point_of_interest_id = 22;
-

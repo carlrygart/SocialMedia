@@ -56,6 +56,8 @@ INSERT INTO user (first_name, last_name, email) VALUES
 	('Marlys', 'Florian', 'Marlys@Florian.com'),
 	('Johnathon', 'Warfel', 'Johnathon@Warfel.com'),
 	('Marc', 'Nokes', 'Marc@Nokes.com');
+# For testing Q2.1
+#INSERT INTO user SET first_name='Andrew', last_name='Norrman', birthday='19780924', email='andrew@norrman.se', sex='M', hometown='Lund';
 
 INSERT INTO work_experience SET employee_id=1, employer='Apple', position='Sales Manager', city=NULL, starting_time=20160101;
 INSERT INTO education SET user_id=2, school_name='Nanyang Tech', school_type=NULL, class_year=NULL;
@@ -163,27 +165,27 @@ INSERT INTO message (timestamp, text, sender_id, receiver_id) VALUES
 	(20150511165453, 'Tellus augue.', 14, 52);
 
 # Manual messages for testing Q2.3
-INSERT INTO message SET text="Hello world!", sender_id=1, receiver_id=2;
-INSERT INTO message SET text="I like candy.", sender_id=2, receiver_id=3;
-INSERT INTO message SET text="How are you doing?", sender_id=1, receiver_id=3;
-INSERT INTO message SET text="What are you doing?", sender_id=4, receiver_id=2;
-INSERT INTO message SET text="My first status update.", sender_id=2, receiver_id=2;
-INSERT INTO message SET text="This is a message.", sender_id=6, receiver_id=3;
-INSERT INTO message SET text="This is another message.", sender_id=6, receiver_id=2;
-INSERT INTO message SET text="This is a third message.", sender_id=1, receiver_id=6;
-INSERT INTO message SET text="Lorem ipsum dolor sit amet, lacus nonummy mattis.", sender_id=1, receiver_id=2;
-INSERT INTO message SET text="Lacus nonummy mattis, ante pellentesque.", sender_id=1, receiver_id=7;
-INSERT INTO message SET text="Lorem ipsum dolor sit amet, aliquam tellus, amet eget quisque.", sender_id=3, receiver_id=2;
-INSERT INTO message SET text="Felis libero placerat et malesuada malesuada", sender_id=5, receiver_id=2;
-INSERT INTO message SET text="Vitae nullam neque in purus tincidunt", sender_id=2, receiver_id=2;
-INSERT INTO message SET text="A facilisis a sodales sem volutpat", sender_id=2, receiver_id=4;
-INSERT INTO message SET text="Vel ut enim augue tempus posuere", sender_id=3, receiver_id=2;
-INSERT INTO message SET text="Turpis tristique habitasse nisl magna porta", sender_id=4, receiver_id=2;
-INSERT INTO message SET text="Consectetuer lacinia condimentum donec cumque volutpat", sender_id=6, receiver_id=4;
+-- INSERT INTO message SET text="Hello world!", sender_id=1, receiver_id=2;
+-- INSERT INTO message SET text="I like candy.", sender_id=2, receiver_id=3;
+-- INSERT INTO message SET text="How are you doing?", sender_id=1, receiver_id=3;
+-- INSERT INTO message SET text="What are you doing?", sender_id=4, receiver_id=2;
+-- INSERT INTO message SET text="My first status update.", sender_id=2, receiver_id=2;
+-- INSERT INTO message SET text="This is a message.", sender_id=2, receiver_id=3;
+-- INSERT INTO message SET text="This is another message.", sender_id=6, receiver_id=2;
+-- INSERT INTO message SET text="This is a third message.", sender_id=2, receiver_id=6;
+-- INSERT INTO message SET text="Lorem ipsum dolor sit amet, lacus nonummy mattis.", sender_id=4, receiver_id=2;
+-- INSERT INTO message SET text="Lacus nonummy mattis, ante pellentesque.", sender_id=1, receiver_id=7;
+-- INSERT INTO message SET text="Lorem ipsum dolor sit amet, aliquam tellus, amet eget quisque.", sender_id=3, receiver_id=2;
+-- INSERT INTO message SET text="Felis libero placerat et malesuada malesuada", sender_id=5, receiver_id=2;
+-- INSERT INTO message SET text="Vitae nullam neque in purus tincidunt", sender_id=2, receiver_id=2;
+-- INSERT INTO message SET text="A facilisis a sodales sem volutpat", sender_id=2, receiver_id=4;
+-- INSERT INTO message SET text="Vel ut enim augue tempus posuere", sender_id=3, receiver_id=2;
+-- INSERT INTO message SET text="Turpis tristique habitasse nisl magna porta", sender_id=4, receiver_id=2;
+-- INSERT INTO message SET text="Consectetuer lacinia condimentum donec cumque volutpat", sender_id=6, receiver_id=4;
 
 # For testing Q2.3
-#INSERT INTO message SET text="Testing", sender_id=39, receiver_id=2;
 #INSERT INTO friendship_listed_in SET user_id_1=2, user_id_2=39, friend_list_id=4;
+#INSERT INTO message SET text="Testing Q2.3", sender_id=39, receiver_id=2;
 #INSERT INTO friendship SET user_id_1=2, user_id_2=38, approved=true;
 #INSERT INTO friendship_listed_in SET user_id_1=2, user_id_2=38, friend_list_id=4;
 
@@ -287,57 +289,67 @@ INSERT INTO comment (timestamp, text, user_id, message_id) VALUES
 	(20150610025757, 'Sed arcu, sem nulla, curabitur ex cras.', 23, 27),
 	(20150604143707, 'Dapibus quis ullamcorper.', 34, 46),
 	(20150624052832, 'Vel nulla a.', 47, 88),
-	(20150603194035, 'Morbi blandit donec, luctus sollicitudin eget, venenatis quam id.', 29, 46),
-	(20150610040218, 'Sapien morbi eu.', 40, 18),
-	(20150608143150, 'Lectus augue, odio quis euismod, vel neque euismod.', 27, 98),
-	(20150623180211, 'Pede erat eleifend, mi ac, pulvinar ac.', 46, 23),
-	(20150614124758, 'In bibendum sodales.', 27, 35),
-	(20150607211600, 'Cum tempus.', 51, 68),
-	(20150605060643, 'Donec urna, magnis sapien praesent, vitae orci et.', 39, 70),
-	(20150614052621, 'Nunc gravida, id taciti.', 30, 5),
-	(20150610034530, 'Turpis et, montes ac, massa mi justo.', 18, 75),
-	(20150607050136, 'Sed duis.', 43, 18),
-	(20150601001942, 'Sed sit arcu, ultrices malesuada est, suscipit urna.', 52, 32),
-	(20150629014333, 'Est per in, amet vel quis.', 42, 5),
-	(20150602212450, 'Pharetra quam, eleifend nullam quis, etiam augue.', 54, 79),
-	(20150628055017, 'Ut et, officiis duis auctor.', 49, 30),
-	(20150602133004, 'Morbi maecenas.', 41, 90),
-	(20150614074225, 'Molestie fermentum ac, cum vitae, nam et.', 55, 34),
-	(20150604214556, 'Neque sollicitudin.', 6, 91),
-	(20150620174043, 'Dui eget et.', 52, 29),
-	(20150623061415, 'Vivamus tellus.', 56, 48),
-	(20150606070635, 'Quisque sociis, neque nostra porttitor, maecenas mauris sodales.', 44, 20),
-	(20150630114011, 'Eu eu lectus, non blandit.', 16, 42),
-	(20150615150455, 'Iaculis neque.', 56, 16),
-	(20150624150512, 'Mollis sed dapibus, eget mattis urna.', 25, 23),
-	(20150606085721, 'Hac a, suspendisse risus, egestas mus hac.', 42, 4),
-	(20150612042456, 'Urna non.', 2, 40),
-	(20150601133109, 'Purus fringilla odio.', 8, 86),
-	(20150626133006, 'Arcu magna, quisque nec proin.', 37, 75),
-	(20150605061325, 'Vivamus consequat felis.', 51, 34),
-	(20150617082035, 'Sit in, nulla semper diam, elit molestiae sed.', 33, 24),
-	(20150630000154, 'Et vestibulum quis, sapien ullamcorper tristique.', 37, 75),
-	(20150607175409, 'Morbi facilisis in.', 39, 13),
-	(20150628182827, 'Eu sapien elit, lorem et.', 15, 73),
-	(20150625030319, 'Dui vivamus wisi.', 55, 88),
-	(20150615060501, 'Pharetra turpis, nibh quisque accumsan, gravida tellus.', 19, 28),
-	(20150630005232, 'Vitae ac, erat duis.', 4, 70),
-	(20150603154856, 'Diam pede nisi, molestie neque.', 26, 94),
-	(20150619035020, 'Felis pellentesque pharetra, in proin, neque augue.', 34, 80),
-	(20150630093237, 'Quisque lacus, class eleifend sit.', 29, 25),
-	(20150625115131, 'Nulla wisi, pede ante quis, velit sit.', 24, 1),
-	(20150618032304, 'Dictum purus.', 50, 88),
-	(20150612213104, 'Nec nibh, scelerisque dui nisl, erat odio vitae.', 44, 7),
-	(20150627000255, 'Gravida wisi, proin et, neque sit.', 7, 33),
-	(20150618025525, 'Tellus massa, at eros ac.', 29, 33),
-	(20150619203038, 'Possimus phasellus.', 39, 61),
-	(20150616033607, 'Quisque odio.', 41, 11),
-	(20150609163743, 'Habitasse est, in curabitur a.', 11, 89),
-	(20150609222617, 'Duis nibh, eu mi posuere, lectus vel ligula.', 36, 35),
-	(20150623040802, 'Vivamus vitae nisl.', 4, 66),
-	(20150629184845, 'Sit accumsan.', 56, 56),
-	(20150614225544, 'Est porttitor.', 6, 11),
-	(20150601074401, 'Nec ut ipsum.', 2, 58);
+	(20150603194035, 'Morbi blandit donec, luctus sollicitudin eget, venenatis quam id.', 29, 46);
+
+# For testing Q2.2
+INSERT INTO comment SET timestamp=20160309173630, text='Nice message!', user_id=2, message_id=1;
+INSERT INTO comment SET timestamp=20160309183131, text='Agree!', user_id=3, message_id=1;
+INSERT INTO comment SET timestamp=20160409183132, text='Me too..', user_id=4, message_id=1;
+INSERT INTO comment SET timestamp=20160409183133, text='Hello there!', user_id=4, message_id=1;
+INSERT INTO comment SET text='Testing', user_id=2, message_id=19;
+#INSERT INTO comment SET text='Testing again', user_id=3, message_id=19;
+
+
+-- 	(20150610040218, 'Sapien morbi eu.', 40, 18),
+-- 	(20150608143150, 'Lectus augue, odio quis euismod, vel neque euismod.', 27, 98),
+-- 	(20150623180211, 'Pede erat eleifend, mi ac, pulvinar ac.', 46, 23),
+-- 	(20150614124758, 'In bibendum sodales.', 27, 35),
+-- 	(20150607211600, 'Cum tempus.', 51, 68),
+-- 	(20150605060643, 'Donec urna, magnis sapien praesent, vitae orci et.', 39, 70),
+-- 	(20150614052621, 'Nunc gravida, id taciti.', 30, 5),
+-- 	(20150610034530, 'Turpis et, montes ac, massa mi justo.', 18, 75),
+-- 	(20150607050136, 'Sed duis.', 43, 18),
+-- 	(20150601001942, 'Sed sit arcu, ultrices malesuada est, suscipit urna.', 52, 32),
+-- 	(20150629014333, 'Est per in, amet vel quis.', 42, 5),
+-- 	(20150602212450, 'Pharetra quam, eleifend nullam quis, etiam augue.', 54, 79),
+-- 	(20150628055017, 'Ut et, officiis duis auctor.', 49, 30),
+-- 	(20150602133004, 'Morbi maecenas.', 41, 90),
+-- 	(20150614074225, 'Molestie fermentum ac, cum vitae, nam et.', 55, 34),
+-- 	(20150604214556, 'Neque sollicitudin.', 6, 91),
+-- 	(20150620174043, 'Dui eget et.', 52, 29),
+-- 	(20150623061415, 'Vivamus tellus.', 56, 48),
+-- 	(20150606070635, 'Quisque sociis, neque nostra porttitor, maecenas mauris sodales.', 44, 20),
+-- 	(20150630114011, 'Eu eu lectus, non blandit.', 16, 42),
+-- 	(20150615150455, 'Iaculis neque.', 56, 16),
+-- 	(20150624150512, 'Mollis sed dapibus, eget mattis urna.', 25, 23),
+-- 	(20150606085721, 'Hac a, suspendisse risus, egestas mus hac.', 42, 4),
+-- 	(20150612042456, 'Urna non.', 2, 40),
+-- 	(20150601133109, 'Purus fringilla odio.', 8, 86),
+-- 	(20150626133006, 'Arcu magna, quisque nec proin.', 37, 75),
+-- 	(20150605061325, 'Vivamus consequat felis.', 51, 34),
+-- 	(20150617082035, 'Sit in, nulla semper diam, elit molestiae sed.', 33, 24),
+-- 	(20150630000154, 'Et vestibulum quis, sapien ullamcorper tristique.', 37, 75),
+-- 	(20150607175409, 'Morbi facilisis in.', 39, 13),
+-- 	(20150628182827, 'Eu sapien elit, lorem et.', 15, 73),
+-- 	(20150625030319, 'Dui vivamus wisi.', 55, 88),
+-- 	(20150615060501, 'Pharetra turpis, nibh quisque accumsan, gravida tellus.', 19, 28),
+-- 	(20150630005232, 'Vitae ac, erat duis.', 4, 70),
+-- 	(20150603154856, 'Diam pede nisi, molestie neque.', 26, 94),
+-- 	(20150619035020, 'Felis pellentesque pharetra, in proin, neque augue.', 34, 80),
+-- 	(20150630093237, 'Quisque lacus, class eleifend sit.', 29, 25),
+-- 	(20150625115131, 'Nulla wisi, pede ante quis, velit sit.', 24, 1),
+-- 	(20150618032304, 'Dictum purus.', 50, 88),
+-- 	(20150612213104, 'Nec nibh, scelerisque dui nisl, erat odio vitae.', 44, 7),
+-- 	(20150627000255, 'Gravida wisi, proin et, neque sit.', 7, 33),
+-- 	(20150618025525, 'Tellus massa, at eros ac.', 29, 33),
+-- 	(20150619203038, 'Possimus phasellus.', 39, 61),
+-- 	(20150616033607, 'Quisque odio.', 41, 11),
+-- 	(20150609163743, 'Habitasse est, in curabitur a.', 11, 89),
+-- 	(20150609222617, 'Duis nibh, eu mi posuere, lectus vel ligula.', 36, 35),
+-- 	(20150623040802, 'Vivamus vitae nisl.', 4, 66),
+-- 	(20150629184845, 'Sit accumsan.', 56, 56),
+-- 	(20150614225544, 'Est porttitor.', 6, 11),
+-- 	(20150601074401, 'Nec ut ipsum.', 2, 58);
 
 INSERT INTO point_of_interest SET name='Orchard Road', description=NULL, address=NULL, contact_info=NULL, longitude=1.819428, latitude=103.524824;
 INSERT INTO point_of_interest (name, longitude, latitude, description) VALUES
@@ -385,6 +397,13 @@ INSERT INTO point_of_interest (name, longitude, latitude, description) VALUES
 
 INSERT INTO category SET category_name='Shopping';
 INSERT INTO poi_has_category SET point_of_interest_id=1, category_name='Shopping';
+
+# For testing Q2.5
+#INSERT INTO checkin_at SET user_id=32, point_of_interest_id=29, timestamp=20160310152101, text=NULL;
+#INSERT INTO checkin_at SET user_id=28, point_of_interest_id=29, timestamp=20160311152101, text=NULL;
+
+# For testing Q2.7
+#INSERT INTO checkin_at SET user_id=1, point_of_interest_id=10, timestamp=20160312152102, text=NULL;
 
 INSERT INTO checkin_at SET user_id=2, point_of_interest_id=1, timestamp=20160309152101, text=NULL;
 INSERT INTO checkin_at (user_id, point_of_interest_id) VALUES
@@ -1378,6 +1397,9 @@ INSERT INTO friendship (user_id_1, user_id_2, approved) VALUES
 	('46', '29', true),
 	('8', '41', true),
 	('7', '26', true);
+
+#INSERT INTO friendship SET user_id_1=15, user_id_2=5, approved=true;
+#INSERT INTO friendship SET user_id_1=23, user_id_2=6, approved=true;
 
 INSERT INTO friendship_listed_in SET user_id_1=6, user_id_2=1, friend_list_id=12;
 INSERT INTO friendship_listed_in SET user_id_1=2, user_id_2=4, friend_list_id=4;
